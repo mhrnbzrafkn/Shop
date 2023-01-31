@@ -39,6 +39,14 @@ namespace Shop.Services.ShopServices.ProductServices
             return product.Id;
         }
 
+        public async Task<IPageResult<GetAllProductsDto>> GetAll(
+            ISort<GetAllProductsDto>? sortExpression,
+            Pagination? pagination,
+            string? search)
+        {
+            return await _repository.GetAll(sortExpression, pagination, search);
+        }
+
         private async Task StopIfTitleIsDuplicated(string title)
         {
             bool isAnyExistByTitle = await _repository.IsAnyExistByTitle(title);

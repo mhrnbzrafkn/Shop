@@ -11,7 +11,8 @@ namespace Shop.Migrations.Migrations
                 .WithColumn("Id").AsString().NotNullable().PrimaryKey()
                 .WithColumn("Title").AsString().NotNullable()
                 .WithColumn("Description").AsString(1000).NotNullable()
-                .WithColumn("Price").AsDouble().NotNullable();
+                .WithColumn("Price").AsDouble().NotNullable()
+                .WithColumn("CreationDate").AsDateTime().NotNullable();
         }
 
         public override void Down()

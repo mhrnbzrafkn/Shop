@@ -11,6 +11,7 @@ public static class ServiceConfig
     {
         webBuilder.Services.AddScoped<EFDataContext>();
         webBuilder.Services.AddTransient<UnitOfWork, EFUnitOfWork>();
+        webBuilder.Services.AddTransient<UriSortParser>();
 
         // register product service and repository
         webBuilder.Services.AddTransient<ProductService, ProductAppService>();

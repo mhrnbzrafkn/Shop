@@ -1,12 +1,7 @@
-﻿namespace Shop.Entities.ShopEntities
+﻿namespace Shop.Services.ShopServices.ProductServices.Contracts.Dtos
 {
-    public class Product
+    public class GetAllProductsDto
     {
-        public Product()
-        {
-            CreationDate = DateTime.UtcNow;
-        }
-
         public string Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
