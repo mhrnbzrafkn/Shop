@@ -44,6 +44,19 @@ namespace Shop.Services.ShopServices.ProductPropertyServices
             return productProperty.Id;
         }
 
+        public async Task<IPageResult<GetAllProductPropertiesDto>> GetAll(
+            string productId,
+            ISort<GetAllProductPropertiesDto>? sortExpression,
+            Pagination? pagination,
+            string? search)
+        {
+            return await _repository.GetAll(
+                productId,
+                sortExpression,
+                pagination,
+                search);
+        }
+
         private async Task StopIfProductIsNotExist(string productId)
         {
             var isProductExist = await _productRepository.FindById(productId);

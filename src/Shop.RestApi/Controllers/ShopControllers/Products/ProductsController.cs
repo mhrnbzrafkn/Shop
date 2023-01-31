@@ -17,7 +17,7 @@ namespace Shop.RestApi.Controllers.ShopControllers.Products
 
         public ProductsController(
             ProductService service,
-            UriSortParser sortParser, 
+            UriSortParser sortParser,
             ProductPropertyService productPropertyService)
         {
             _service = service;
@@ -71,6 +71,25 @@ namespace Shop.RestApi.Controllers.ShopControllers.Products
         public async Task<string> AddProperty(string id, AddProductPropertyDto dto)
         {
             return await _productPropertyService.Add(id, dto);
+        }
+
+        [HttpGet("{id}/properties")]
+        public async Task<IPageResult<GetAllProductPropertiesDto>> GetAllProperties(
+            string id,
+            [FromQuery] string? sort,
+            [FromQuery] int? limit,
+            [FromQuery] int? offset,
+            string? search)
+        {
+            var sortExpression = !string.IsNullOrEmpty(sort) ?
+                _sortParser.Parse<GetAllProductPropertiesDto>(sort) :
+                null;
+
+            var pagination = limit.HasValue && offset.HasValue ?
+                Pagination.Of(offset.Value + 1, limit.Value) :
+                null;
+
+            return await _productPropertyService.GetAll(id, sortExpression, pagination, search);
         }
     }
 }
