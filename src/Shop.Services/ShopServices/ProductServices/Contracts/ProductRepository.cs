@@ -14,5 +14,6 @@ namespace Shop.Services.ShopServices.ProductServices.Contracts
             string? search);
         Task<Product> FindById(string id);
         void Delete(Product product);
+        Task<GetProductDto> Get(string id);
     }
 }

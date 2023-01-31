@@ -47,6 +47,18 @@ namespace Shop.Persistence.EF.ShopRepositories.Products
             _products.Remove(product);
         }
 
+        public async Task<GetProductDto> Get(string id)
+        {
+            return await _products.Select(_ => new GetProductDto
+            {
+                Id = id,
+                Title = _.Title,
+                Description = _.Description,
+                Price = _.Price,
+                CreationDate = _.CreationDate,
+            }).FirstOrDefaultAsync(_ => _.Id == id);
+        }
+
         public async Task<Product> FindById(string id)
         {
             return await _products.FindAsync(id);

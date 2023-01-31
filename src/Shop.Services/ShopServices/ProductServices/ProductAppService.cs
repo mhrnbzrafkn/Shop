@@ -58,6 +58,11 @@ namespace Shop.Services.ShopServices.ProductServices
             await _unitOfWork.Complete();
         }
 
+        public async Task<GetProductDto> Get(string id)
+        {
+            return await _repository.Get(id);
+        }
+
         private static void StopIfProductIsNotExist(Product product)
         {
             if (product == null)
