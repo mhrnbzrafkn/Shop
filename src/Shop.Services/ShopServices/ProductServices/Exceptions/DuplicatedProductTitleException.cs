@@ -2,7 +2,7 @@
 
 namespace Shop.Services.ShopServices.ProductServices.Exceptions
 {
-    public class DuplicatedProductException : BusinessException
+    public class DuplicatedProductTitleException : BusinessException
     {
     }
 }

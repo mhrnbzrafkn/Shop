@@ -2,7 +2,7 @@
 
 namespace Shop.Services.ShopServices.ProductServices.Contracts.Dtos
 {
-    public class AddProductDto
+    public class EditProductDto
     {
         [Required]
         public string Title { get; set; }

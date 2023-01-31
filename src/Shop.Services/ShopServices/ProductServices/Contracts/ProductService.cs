@@ -12,5 +12,6 @@ namespace Shop.Services.ShopServices.ProductServices.Contracts
             string? search);
         Task Delete(string id);
         Task<GetProductDto?> Get(string id);
+        Task Edit(string id, EditProductDto dto);
     }
 }

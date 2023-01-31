@@ -55,5 +55,11 @@ namespace Shop.RestApi.Controllers.ShopControllers.Products
         {
             return await _service.Get(id);
         }
+
+        [HttpPut("{id}")]
+        public async Task Edit(string id, EditProductDto dto)
+        {
+            await _service.Edit(id, dto);
+        }
     }
 }

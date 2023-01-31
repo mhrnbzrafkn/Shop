@@ -15,5 +15,6 @@ namespace Shop.Services.ShopServices.ProductServices.Contracts
         Task<Product> FindById(string id);
         void Delete(Product product);
         Task<GetProductDto?> Get(string id);
+        Task<bool> IsTitleDuplicated(string id, string title);
     }
 }

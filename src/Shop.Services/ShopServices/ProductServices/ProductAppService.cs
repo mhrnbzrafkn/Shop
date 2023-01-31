@@ -63,17 +63,37 @@ namespace Shop.Services.ShopServices.ProductServices
             return await _repository.Get(id);
         }
 
-        private static void StopIfProductIsNotExist(Product product)
+        public async Task Edit(string id, EditProductDto dto)
         {
-            if (product == null)
-                throw new ProductIsNotExistException();
+            var product = await _repository.FindById(id);
+
+            await StopIfTitleIsDuplicated(id, dto);
+
+            product.Title = dto.Title;
+            product.Description = dto.Description;
+            product.Price = dto.Price;
+
+            await _unitOfWork.Complete();
+        }
+
+        private async Task StopIfTitleIsDuplicated(string id, EditProductDto dto)
+        {
+            var isTitleDuplicated = await _repository.IsTitleDuplicated(id, dto.Title);
+            if (isTitleDuplicated)
+                throw new DuplicatedProductTitleException();
         }
 
         private async Task StopIfTitleIsDuplicated(string title)
         {
             bool isAnyExistByTitle = await _repository.IsAnyExistByTitle(title);
             if (isAnyExistByTitle)
-                throw new DuplicatedProductException();
+                throw new DuplicatedProductTitleException();
+        }
+
+        private static void StopIfProductIsNotExist(Product product)
+        {
+            if (product == null)
+                throw new ProductIsNotExistException();
         }
 
         private void StopIfPriceIsNotValid(double price)

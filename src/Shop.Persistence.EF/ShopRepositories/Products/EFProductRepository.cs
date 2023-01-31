@@ -70,6 +70,12 @@ namespace Shop.Persistence.EF.ShopRepositories.Products
             return await _products.AnyAsync(_ => _.Title == title);
         }
 
+        public async Task<bool> IsTitleDuplicated(string id, string title)
+        {
+            return await _products.AnyAsync(_ => _.Id != id &&
+            _.Title.Trim().ToLower() == title.Trim().ToLower());
+        }
+
         private IQueryable<GetAllProductsDto> GetProducts()
         {
             return _products
