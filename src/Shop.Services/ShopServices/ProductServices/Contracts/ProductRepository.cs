@@ -12,5 +12,7 @@ namespace Shop.Services.ShopServices.ProductServices.Contracts
             ISort<GetAllProductsDto>? sortExpression,
             Pagination? pagination,
             string? search);
+        Task<Product> FindById(string id);
+        void Delete(Product product);
     }
 }

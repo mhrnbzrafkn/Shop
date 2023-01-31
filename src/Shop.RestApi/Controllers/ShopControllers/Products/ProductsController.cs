@@ -43,5 +43,11 @@ namespace Shop.RestApi.Controllers.ShopControllers.Products
 
             return await _service.GetAll(sortExpression, pagination, search);
         }
+
+        [HttpDelete]
+        public async Task Delete(string Id)
+        {
+            await _service.Delete(Id);
+        }
     }
 }

@@ -42,6 +42,16 @@ namespace Shop.Persistence.EF.ShopRepositories.Products
                 products, products.ToList().Count);
         }
 
+        public void Delete(Product product)
+        {
+            _products.Remove(product);
+        }
+
+        public async Task<Product> FindById(string id)
+        {
+            return await _products.FindAsync(id);
+        }
+
         public async Task<bool> IsAnyExistByTitle(string title)
         {
             return await _products.AnyAsync(_ => _.Title == title);
@@ -61,7 +71,7 @@ namespace Shop.Persistence.EF.ShopRepositories.Products
         }
 
         private IQueryable<GetAllProductsDto> DoSearchOnProducts(
-            string? search, 
+            string? search,
             IQueryable<GetAllProductsDto> products)
         {
             if (!string.IsNullOrWhiteSpace(search))

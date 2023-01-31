@@ -47,6 +47,23 @@ namespace Shop.Services.ShopServices.ProductServices
             return await _repository.GetAll(sortExpression, pagination, search);
         }
 
+        public async Task Delete(string id)
+        {
+            var product = await _repository.FindById(id);
+
+            StopIfProductIsNotExist(product);
+
+            _repository.Delete(product);
+
+            await _unitOfWork.Complete();
+        }
+
+        private static void StopIfProductIsNotExist(Product product)
+        {
+            if (product == null)
+                throw new ProductIsNotExistException();
+        }
+
         private async Task StopIfTitleIsDuplicated(string title)
         {
             bool isAnyExistByTitle = await _repository.IsAnyExistByTitle(title);
