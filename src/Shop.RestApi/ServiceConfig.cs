@@ -1,6 +1,9 @@
 ﻿using Shop.Infrastructures;
 using Shop.Persistence.EF;
+using Shop.Persistence.EF.ShopRepositories.ProductProperties;
 using Shop.Persistence.EF.ShopRepositories.Products;
+using Shop.Services.ShopServices.ProductPropertyServices;
+using Shop.Services.ShopServices.ProductPropertyServices.Contracts;
 using Shop.Services.ShopServices.ProductServices;
 using Shop.Services.ShopServices.ProductServices.Contracts;
 
@@ -16,5 +19,9 @@ public static class ServiceConfig
         // register product service and repository
         webBuilder.Services.AddTransient<ProductService, ProductAppService>();
         webBuilder.Services.AddTransient<ProductRepository, EFProductRepository>();
+
+        // register product property service and repository
+        webBuilder.Services.AddTransient<ProductPropertyService, ProductPropertyAppService>();
+        webBuilder.Services.AddTransient<ProductPropertyRepository, EFProductPropertyRepository>();
     }
 }

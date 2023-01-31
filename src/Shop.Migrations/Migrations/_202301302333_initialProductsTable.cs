@@ -3,7 +3,7 @@
 namespace Shop.Migrations.Migrations
 {
     [Migration(202301302333)]
-    public class _202301302333_initialProductsTable : Migration
+    public class _202301302333_InitialProductsTable : Migration
     {
         public override void Up()
         {

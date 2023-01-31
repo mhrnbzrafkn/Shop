@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Shop.Infrastructures;
+using Shop.Services.ShopServices.ProductPropertyServices.Contracts;
+using Shop.Services.ShopServices.ProductPropertyServices.Contracts.Dtos;
 using Shop.Services.ShopServices.ProductServices.Contracts;
 using Shop.Services.ShopServices.ProductServices.Contracts.Dtos;
 
@@ -7,17 +9,20 @@ namespace Shop.RestApi.Controllers.ShopControllers.Products
 {
     [ApiController]
     [Route("[controller]")]
-    public class ProductsController
+    public class ProductsController : ControllerBase
     {
         private readonly ProductService _service;
         private readonly UriSortParser _sortParser;
+        private readonly ProductPropertyService _productPropertyService;
 
         public ProductsController(
             ProductService service,
-            UriSortParser sortParser)
+            UriSortParser sortParser, 
+            ProductPropertyService productPropertyService)
         {
             _service = service;
             _sortParser = sortParser;
+            _productPropertyService = productPropertyService;
         }
 
         [HttpPost]
@@ -60,6 +65,12 @@ namespace Shop.RestApi.Controllers.ShopControllers.Products
         public async Task Edit(string id, EditProductDto dto)
         {
             await _service.Edit(id, dto);
+        }
+
+        [HttpPost("{id}/properties")]
+        public async Task<string> AddProperty(string id, AddProductPropertyDto dto)
+        {
+            return await _productPropertyService.Add(id, dto);
         }
     }
 }

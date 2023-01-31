@@ -93,7 +93,7 @@ namespace Shop.Services.ShopServices.ProductServices
         private static void StopIfProductIsNotExist(Product product)
         {
             if (product == null)
-                throw new ProductIsNotExistException();
+                throw new ProductNotFoundException();
         }
 
         private void StopIfPriceIsNotValid(double price)

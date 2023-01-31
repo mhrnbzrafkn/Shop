@@ -2,7 +2,7 @@
 
 namespace Shop.Services.ShopServices.ProductServices.Exceptions
 {
-    public class ProductIsNotExistException : BusinessException
+    public class ProductNotFoundException : BusinessException
     {
     }
 }
