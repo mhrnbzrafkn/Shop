@@ -58,7 +58,7 @@ namespace Shop.Services.ShopServices.ProductServices
             await _unitOfWork.Complete();
         }
 
-        public async Task<GetProductDto> Get(string id)
+        public async Task<GetProductDto?> Get(string id)
         {
             return await _repository.Get(id);
         }

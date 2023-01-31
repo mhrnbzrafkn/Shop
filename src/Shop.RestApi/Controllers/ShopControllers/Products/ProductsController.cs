@@ -51,7 +51,7 @@ namespace Shop.RestApi.Controllers.ShopControllers.Products
         }
 
         [HttpGet("{id}")]
-        public async Task<GetProductDto> Get(string id)
+        public async Task<GetProductDto?> Get(string id)
         {
             return await _service.Get(id);
         }

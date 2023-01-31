@@ -11,6 +11,6 @@ namespace Shop.Services.ShopServices.ProductServices.Contracts
             Pagination? pagination, 
             string? search);
         Task Delete(string id);
-        Task<GetProductDto> Get(string id);
+        Task<GetProductDto?> Get(string id);
     }
 }
