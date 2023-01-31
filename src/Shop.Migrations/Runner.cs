@@ -16,6 +16,7 @@ static class Runner
         CreateDatabase(connectionString);
 
         var runner = CreateRunner(connectionString, options);
+        runner.MigrateDown(0);
         runner.MigrateUp();
     }
 
@@ -70,16 +71,15 @@ static class Runner
 
     private static MigrationSettings GetSettings(string[] args, string baseDir)
     {
-        var configurations = new ConfigurationBuilder(
-        )
-            .SetBasePath(baseDir)
-            .AddJsonFile(
-                "appsettings.json",
-                optional: true,
-                reloadOnChange: false)
-            .AddEnvironmentVariables()
-            .AddCommandLine(args)
-            .Build();
+        var configurations = new ConfigurationBuilder()
+        .SetBasePath(baseDir)
+        .AddJsonFile(
+            "appsettings.json",
+            optional: true,
+            reloadOnChange: false)
+        .AddEnvironmentVariables()
+        .AddCommandLine(args)
+        .Build();
 
         var settings = new MigrationSettings();
         configurations.Bind(settings);
