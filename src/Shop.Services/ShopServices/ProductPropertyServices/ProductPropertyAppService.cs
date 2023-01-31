@@ -44,6 +44,17 @@ namespace Shop.Services.ShopServices.ProductPropertyServices
             return productProperty.Id;
         }
 
+        public async Task Delete(string id)
+        {
+            var productProperty = await _repository.Find(id);
+
+            StopIfProductPropertyNotFound(productProperty);
+
+            _repository.Delete(productProperty);
+
+            await _unitOfWork.Complete();
+        }
+
         public async Task<IPageResult<GetAllProductPropertiesDto>> GetAll(
             string productId,
             ISort<GetAllProductPropertiesDto>? sortExpression,
@@ -64,11 +75,19 @@ namespace Shop.Services.ShopServices.ProductPropertyServices
                 throw new ProductNotFoundException();
         }
 
-        private async Task StopIfPropertyKeyIsDuplicated(string productId, string key)
+        private async Task StopIfPropertyKeyIsDuplicated(
+            string productId, 
+            string key)
         {
             bool isKeyDuplicated = await _repository.IsKeyDuplicated(productId, key);
             if (isKeyDuplicated)
                 throw new DuplicatedPropertyKeyException();
+        }
+
+        private static void StopIfProductPropertyNotFound(ProductProperty productProperty)
+        {
+            if (productProperty == null)
+                throw new ProductPropertyNotFoundException();
         }
     }
 }

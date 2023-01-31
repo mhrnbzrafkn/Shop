@@ -26,7 +26,7 @@ namespace Shop.Persistence.EF.ShopRepositories.ProductProperties
             Pagination? pagination,
             string? search)
         {
-            var productproperties = GetProductproperties(productId);
+            var productproperties = GetProductProperties(productId);
 
             productproperties = DoSearchOnProducts(search, productproperties);
 
@@ -41,6 +41,16 @@ namespace Shop.Persistence.EF.ShopRepositories.ProductProperties
 
             return new PageResult<GetAllProductPropertiesDto>(
                 productproperties, productproperties.ToList().Count);
+        }
+
+        public void Delete(ProductProperty productProperty)
+        {
+            _productProperties.Remove(productProperty);
+        }
+
+        public async Task<ProductProperty> Find(string id)
+        {
+            return await _productProperties.FindAsync(id);
         }
 
         public async Task<bool> IsKeyDuplicated(
@@ -65,13 +75,14 @@ namespace Shop.Persistence.EF.ShopRepositories.ProductProperties
             return productProperties;
         }
 
-        private IQueryable<GetAllProductPropertiesDto> GetProductproperties(
+        private IQueryable<GetAllProductPropertiesDto> GetProductProperties(
             string productId)
         {
             return _productProperties
                 .Where(_ => _.ProductId == productId)
                 .Select(_ => new GetAllProductPropertiesDto
                 {
+                    Id = _.Id,
                     Key = _.Key,
                     Value = _.Value,
                 });
