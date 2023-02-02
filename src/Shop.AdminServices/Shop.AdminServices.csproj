@@ -1,14 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<DebugType>none</DebugType>
+		<DebugSymbols>false</DebugSymbols>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Shop.Infrastructures\Shop.Infrastructures.csproj" />
-    <ProjectReference Include="..\Shop.Persistence.EF\Shop.Persistence.EF.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Shop.Infrastructures\Shop.Infrastructures.csproj" />
+		<ProjectReference Include="..\Shop.Persistence.EF\Shop.Persistence.EF.csproj" />
+	</ItemGroup>
 
 </Project>
