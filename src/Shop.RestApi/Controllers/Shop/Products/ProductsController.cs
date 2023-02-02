@@ -5,7 +5,7 @@ using Shop.Services.ShopServices.ProductPropertyServices.Contracts.Dtos;
 using Shop.Services.ShopServices.ProductServices.Contracts;
 using Shop.Services.ShopServices.ProductServices.Contracts.Dtos;
 
-namespace Shop.RestApi.Controllers.ShopControllers.Products
+namespace Shop.RestApi.Controllers.Shop.Products
 {
     [ApiController]
     [Route("[controller]")]

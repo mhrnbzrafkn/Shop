@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Shop.Services.ShopServices.ProductPropertyServices.Contracts;
 
-namespace Shop.RestApi.Controllers.ShopControllers.ProductProperties
+namespace Shop.RestApi.Controllers.Shop.ProductProperties
 {
     [ApiController]
     [Route("[controller]")]
