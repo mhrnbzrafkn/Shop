@@ -7,9 +7,6 @@
 		<DebugType>none</DebugType>
 		<DebugSymbols>false</DebugSymbols>
 		<IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
-
-		<PrivateAssets>all</PrivateAssets>
-		<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 	</PropertyGroup>
 
 	<ItemGroup>
