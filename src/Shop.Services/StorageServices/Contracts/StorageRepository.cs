@@ -4,7 +4,7 @@ using Shop.Services.StorageServices.Contracts.Dtos;
 
 namespace Shop.Services.StorageServices.Contracts
 {
-    public interface StorageRepository : Service
+    public interface StorageRepository : Repository
     {
         GetMediaDto? GetById(string id);
         void Add(Media document);

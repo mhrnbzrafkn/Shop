@@ -37,11 +37,11 @@ internal class LoggingConfig : Configuration
         var logsDbPath = Path.Combine(BaseDirectory, filePath);
 
         Log.Logger = new LoggerConfiguration()
-            .WriteTo
-            .SQLite(
-            logsDbPath, 
-            restrictedToMinimumLevel: serilogLevel.Value, 
-            rollOver: false)
+            //.WriteTo
+            //.SQLite(
+            //logsDbPath, 
+            //restrictedToMinimumLevel: serilogLevel.Value, 
+            //rollOver: false)
             .CreateLogger();
     }
 

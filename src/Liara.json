@@ -1,0 +1,9 @@
+{
+  "platform": "netcore",
+  "netcore": {
+    "version": "6.0",
+    "finalDllName": "Shop.RestApi",
+    "csprojectFile": "Shop.RestApi/Shop.RestApi.csproj"
+  },
+  "port": 80
+}
