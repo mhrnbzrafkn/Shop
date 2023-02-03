@@ -7,8 +7,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Shop.RestApi.Controllers.Storage
 {
+    [ApiVersion("1.0")]
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/v{version:apiVersion}/medias")]
     public class MediasController : ControllerBase
     {
         private readonly StorageService _service;

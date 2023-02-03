@@ -3,8 +3,9 @@ using Shop.Services.ShopServices.ProductPropertyServices.Contracts;
 
 namespace Shop.RestApi.Controllers.Shop.ProductProperties
 {
+    [ApiVersion("1.0")]
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/v{version:apiVersion}/product-properties")]
     public class ProductPropertiesController : ControllerBase
     {
         private readonly ProductPropertyService _service;

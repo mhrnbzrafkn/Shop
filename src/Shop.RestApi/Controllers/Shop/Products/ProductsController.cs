@@ -7,8 +7,9 @@ using Shop.Services.ShopServices.ProductServices.Contracts.Dtos;
 
 namespace Shop.RestApi.Controllers.Shop.Products
 {
+    [ApiVersion("1.0")]
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/v{version:apiVersion}/products")]
     public class ProductsController : ControllerBase
     {
         private readonly ProductService _service;
