@@ -1,18 +1,19 @@
-# name: CD-Liara
-# on:
-#   push:
-#     branches: [dev]
-# jobs:
-#   deploy:
-#     runs-on: ubuntu-latest
+ name: CD-Liara
+ on:
+   push:
+     branches: [dev]
+ jobs:
+   deploy:
+     runs-on: ubuntu-latest
 
-#     steps:
-#       - uses: actions/checkout@v3
-#       - uses: actions/setup-node@v3
-#         with:
-#           node-version: "16"
-#       - name: update-liara
-#         env:
-#           LIARA_TOKEN: ${{ secrets.LIARA_API_TOKEN }}
-#         run: |
-#           liara deploy --app="shopapi" --api-token="$LIARA_TOKEN" --detach
+     steps:
+       - uses: actions/checkout@v3
+       - uses: actions/setup-node@v3
+         with:
+           node-version: "16"
+       - name: update-liara
+         env:
+           LIARA_TOKEN: ${{ secrets.LIARA_API_TOKEN }}
+         run: |
+           npm install -g @liara/cli
+           liara deploy --app="shopapi" --api-token="$LIARA_TOKEN" --detach
