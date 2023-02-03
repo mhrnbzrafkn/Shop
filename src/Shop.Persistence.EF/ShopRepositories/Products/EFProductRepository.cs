@@ -56,6 +56,7 @@ namespace Shop.Persistence.EF.ShopRepositories.Products
                 Title = _.Title,
                 Description = _.Description,
                 Price = _.Price,
+                ImageId = _.Image.Id,
                 CreationDate = _.CreationDate,
             }).SingleOrDefaultAsync(_ => _.Id == id);
         }
@@ -85,6 +86,7 @@ namespace Shop.Persistence.EF.ShopRepositories.Products
                 Title = _.Title,
                 Description = _.Description,
                 Price = _.Price,
+                ImageId = _.Image.Id,
                 CreationDate = _.CreationDate,
             }).OrderByDescending(_ => _.CreationDate);
         }

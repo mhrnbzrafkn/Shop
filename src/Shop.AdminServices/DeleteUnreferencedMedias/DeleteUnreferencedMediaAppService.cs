@@ -49,23 +49,23 @@ public class DeleteUnreferencedMediaAppService
         {
             try
             {
-                await _dbContext.Database.ExecuteSqlRawAsync(
+                var x = await _dbContext.Database.ExecuteSqlRawAsync(
                 $"DELETE FROM Medias WHERE Id =" +
                 $"N'{unReferencedDocumentId}' " +
                 $"And DATEDIFF(HOUR,CreationDate,N'{now}') > 1",
                 stoppingToken);
 
-                dto.DocumentDeleted.Add(unReferencedDocumentId);
+                dto.MediasDeleted.Add(unReferencedDocumentId);
             }
             catch (Exception e)
             {
                 var documentNotDeleted = new MediaNotDeletedDto()
                 {
-                    DocumentNotDeletedId = unReferencedDocumentId,
+                    MediaNotDeletedId = unReferencedDocumentId,
                     ExceptionMessage = e.Message
                 };
 
-                dto.DocumentsNotDeleted.Add(documentNotDeleted);
+                dto.MediasNotDeleted.Add(documentNotDeleted);
             }
         }
 

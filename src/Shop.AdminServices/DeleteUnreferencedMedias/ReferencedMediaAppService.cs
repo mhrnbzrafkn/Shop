@@ -4,6 +4,7 @@ using Shop.Entities.ShopEntities;
 using Shop.Persistence.EF;
 using System.Reflection;
 using Shop.Infrastructures;
+using Shop.Infrastructures.Storages;
 
 namespace Shop.AdminServices.DeleteUnreferencedMedias;
 
@@ -20,37 +21,35 @@ public class ReferencedMediaAppService
     {
         var assembly = Assembly.GetAssembly(typeof(Product));
 
-        var typeWithDocuments =
-            assembly?.GetTypes()
-                .Where(_ => _.GetProperties()
-                    .Any(s => s.PropertyType == typeof(Shop.Entities.StorageEntities.Media)))
-                .SelectMany(_ => _.GetProperties()
-                    .Where(s => s.PropertyType == typeof(Shop.Entities.StorageEntities.Media))
-                    .Select(t => new MediaTypeAndColumnDto
-                    {
-                        Type = _,
-                        ColumnSpecifier = t.Name
-                    })).ToList();
+        var typeWithMedias = assembly?.GetTypes()
+        .Where(_ => _.GetProperties()
+        .Any(s => s.PropertyType == typeof(Media)))
+        .SelectMany(_ => _.GetProperties()
+        .Where(s => s.PropertyType == typeof(Media))
+        .Select(t => new MediaTypeAndColumnDto
+        {
+            Type = _,
+            ColumnSpecifier = t.Name
+        })).ToList();
 
         return await FindReferencedDocumentIds(
-            typeWithDocuments ?? new List<MediaTypeAndColumnDto>());
+            typeWithMedias ?? new List<MediaTypeAndColumnDto>());
     }
 
     private async Task<List<string>> FindReferencedDocumentIds(
         List<MediaTypeAndColumnDto> documentTypes)
     {
-        var referencedDocumentIds
-            = Enumerable.Empty<string>();
+        var referencedMediaIds = Enumerable.Empty<string>();
         foreach (var item in documentTypes)
         {
-            referencedDocumentIds = await referencedDocumentIds.Union(
-                _dbContext.Set(item.Type)
-                .Where($"_ =>  _.{item.ColumnSpecifier} != null")
-                .Select($"_ => _.{item.ColumnSpecifier}.Id")
-                .ToDynamicList<string>())
-                .ToDynamicListAsync<string>();
+            referencedMediaIds = await referencedMediaIds.Union(
+            _dbContext.Set(item.Type)
+            .Where($"_ =>  _.{item.ColumnSpecifier} != null")
+            .Select($"_ => _.{item.ColumnSpecifier}.Id")
+            .ToDynamicList<string>())
+            .ToDynamicListAsync<string>();
         }
 
-        return referencedDocumentIds.ToList();
+        return referencedMediaIds.ToList();
     }
 }

@@ -65,22 +65,20 @@ namespace Shop.RestApi.Configs
 
                     var deleteUnReferencedFilesService =
                         new DeleteUnreferencedMediaAppService(
-                            dbContext,
-                            timeService);
-                    var result =
-                        await deleteUnReferencedFilesService.Execute(stoppingToken);
+                            dbContext, timeService);
+                    var result = await deleteUnReferencedFilesService
+                        .Execute(stoppingToken);
 
-                    result.DocumentDeleted.ForEach(
-                        _ =>
-                            _logger.LogInformation(
-                                $"Document with id :" +
-                                $" {_} successfully deleted"));
+                    result.MediasDeleted.ForEach(
+                    mediaDeletedId => _logger.LogInformation(
+                    $"media with id :" +
+                    $" {mediaDeletedId} successfully deleted"));
 
-                    result.DocumentsNotDeleted.ForEach(_ =>
-                        _logger.LogError(
-                            $"Delete document with id :" +
-                            $"{_.DocumentNotDeletedId} failed " +
-                            $"with error : {_.ExceptionMessage}"));
+                    result.MediasNotDeleted.ForEach(
+                    mediaNotDeleted => _logger.LogError(
+                    $"Delete media with id :" +
+                    $"{mediaNotDeleted.MediaNotDeletedId} failed " +
+                    $"with error : {mediaNotDeleted.ExceptionMessage}"));
                 }
 
                 await Task.Delay(_options.JobStepDelay, stoppingToken);

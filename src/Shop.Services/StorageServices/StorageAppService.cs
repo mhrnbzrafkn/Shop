@@ -27,7 +27,7 @@ namespace Shop.Services.StorageServices
         {
             var id = Guid.NewGuid().ToString();
 
-            var document = new Media
+            var media = new Media
             {
                 Id = id,
                 CreationDate = DateTime.UtcNow,
@@ -36,11 +36,11 @@ namespace Shop.Services.StorageServices
                 Extension = dto.Extension.TrimStart('.')
             };
 
-            _repository.Add(document);
+            _repository.Add(media);
 
             await _unitOfWork.Complete();
 
-            return document.Id;
+            return media.Id;
         }
     }
 }

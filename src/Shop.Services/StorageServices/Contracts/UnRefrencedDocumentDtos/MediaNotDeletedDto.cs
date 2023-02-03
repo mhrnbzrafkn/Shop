@@ -2,7 +2,7 @@
 {
     public class MediaNotDeletedDto
     {
-        public string DocumentNotDeletedId { get; set; }
+        public string MediaNotDeletedId { get; set; }
         public string ExceptionMessage { get; set; }
     }
 }

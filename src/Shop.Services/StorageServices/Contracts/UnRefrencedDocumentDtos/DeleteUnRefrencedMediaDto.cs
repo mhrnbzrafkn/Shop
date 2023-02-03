@@ -2,7 +2,7 @@
 {
     public class DeleteUnRefrencedMediaDto
     {
-        public List<string> DocumentDeleted { get; set; } = new();
-        public List<MediaNotDeletedDto> DocumentsNotDeleted { get; set; } = new();
+        public List<string> MediasDeleted { get; set; } = new();
+        public List<MediaNotDeletedDto> MediasNotDeleted { get; set; } = new();
     }
 }

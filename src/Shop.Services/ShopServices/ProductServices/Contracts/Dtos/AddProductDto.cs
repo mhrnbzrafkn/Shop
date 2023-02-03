@@ -10,5 +10,7 @@ namespace Shop.Services.ShopServices.ProductServices.Contracts.Dtos
         public string Description { get; set; }
         [Required]
         public double Price { get; set; }
+        [Required]
+        public string ImageId { get; set; }
     }
 }

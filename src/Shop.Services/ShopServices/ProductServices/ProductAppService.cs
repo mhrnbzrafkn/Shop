@@ -1,5 +1,6 @@
 ﻿using Shop.Entities.ShopEntities;
 using Shop.Infrastructures;
+using Shop.Infrastructures.Storages;
 using Shop.Services.ShopServices.ProductServices.Contracts;
 using Shop.Services.ShopServices.ProductServices.Contracts.Dtos;
 using Shop.Services.ShopServices.ProductServices.Exceptions;
@@ -29,7 +30,8 @@ namespace Shop.Services.ShopServices.ProductServices
             {
                 Title = dto.Title,
                 Description = dto.Description,
-                Price = dto.Price
+                Price = dto.Price,
+                Image = new Media(dto.ImageId)
             };
 
             _repository.Add(product);

@@ -15,6 +15,14 @@ namespace Shop.Persistence.EF.ShopRepositories.Products
             builder.Property(_ => _.Title).IsRequired();
             builder.Property(_ => _.Description).IsRequired();
             builder.Property(_ => _.Price).IsRequired();
+
+            builder.OwnsOne(
+            _ => _.Image,
+            product =>
+            {
+                product.Property(media => media.Id)
+                .HasColumnName("ImageId").IsRequired();
+            });
         }
     }
 }

@@ -8,4 +8,8 @@
 		<DebugSymbols>false</DebugSymbols>
 	</PropertyGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\Shop.Infrastructures\Shop.Infrastructures.csproj" />
+	</ItemGroup>
+
 </Project>

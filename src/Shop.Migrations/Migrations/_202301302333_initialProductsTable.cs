@@ -12,6 +12,7 @@ namespace Shop.Migrations.Migrations
                 .WithColumn("Title").AsString().NotNullable()
                 .WithColumn("Description").AsString(1000).NotNullable()
                 .WithColumn("Price").AsDouble().NotNullable()
+                .WithColumn("ImageId").AsString().NotNullable()
                 .WithColumn("CreationDate").AsDateTime().NotNullable();
         }
 
