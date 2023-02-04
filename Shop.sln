@@ -3,19 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.Entities", "Shop.Entities\Shop.Entities.csproj", "{2F327028-C6D6-41E6-B120-600E9DCA2376}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.Entities", "src\Shop.Entities\Shop.Entities.csproj", "{2F327028-C6D6-41E6-B120-600E9DCA2376}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.Services", "Shop.Services\Shop.Services.csproj", "{6A520729-80E8-4611-9A70-502F53C54AFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.Services", "src\Shop.Services\Shop.Services.csproj", "{6A520729-80E8-4611-9A70-502F53C54AFC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.Persistence.EF", "Shop.Persistence.EF\Shop.Persistence.EF.csproj", "{58678303-696D-44C0-9AC4-D4AB52DFB103}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.Persistence.EF", "src\Shop.Persistence.EF\Shop.Persistence.EF.csproj", "{58678303-696D-44C0-9AC4-D4AB52DFB103}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.RestApi", "Shop.RestApi\Shop.RestApi.csproj", "{4BEF2543-2818-4AE2-90BC-88DCBB9AE88B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.RestApi", "src\Shop.RestApi\Shop.RestApi.csproj", "{4BEF2543-2818-4AE2-90BC-88DCBB9AE88B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.Migrations", "Shop.Migrations\Shop.Migrations.csproj", "{9E6EEF84-0FCC-46C8-808E-8793C04A4136}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.Migrations", "src\Shop.Migrations\Shop.Migrations.csproj", "{9E6EEF84-0FCC-46C8-808E-8793C04A4136}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.Infrastructures", "Shop.Infrastructures\Shop.Infrastructures.csproj", "{1C7BEAC6-F9DE-4BB8-886B-4295916A9136}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.Infrastructures", "src\Shop.Infrastructures\Shop.Infrastructures.csproj", "{1C7BEAC6-F9DE-4BB8-886B-4295916A9136}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.AdminServices", "Shop.AdminServices\Shop.AdminServices.csproj", "{0C14E6BF-A8C9-4DDE-8D93-3BA183CCBF55}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.AdminServices", "src\Shop.AdminServices\Shop.AdminServices.csproj", "{0C14E6BF-A8C9-4DDE-8D93-3BA183CCBF55}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
