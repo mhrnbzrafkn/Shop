@@ -10,7 +10,9 @@ namespace Shop.RestApi.Controllers
         [HttpGet]
         public string Informations()
         {
-            return "This Is Some Information About This API.";
+            var informations = "This Is Some Information About This API. \n" +
+                               "we have many useful apis for creating many powerfull websites";
+            return informations;
         }
     }
 }
