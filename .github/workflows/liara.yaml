@@ -16,4 +16,4 @@
            LIARA_TOKEN: ${{ secrets.LIARA_API_TOKEN }}
          run: |
            npm install -g @liara/cli
-           liara deploy --app="shopapi" --api-token="$LIARA_TOKEN" --detach --port=80
+           liara deploy --app="shopapi" --api-token="$LIARA_TOKEN" --detach --port=80 --platform=netcore
