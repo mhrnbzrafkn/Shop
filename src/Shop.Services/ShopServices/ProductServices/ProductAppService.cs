@@ -31,7 +31,9 @@ namespace Shop.Services.ShopServices.ProductServices
                 Title = dto.Title,
                 Description = dto.Description,
                 Price = dto.Price,
-                Image = new Media(dto.ImageId)
+                Image = new Media(dto.ImageId),
+                Longitude = dto.Longitude,
+                Latitude = dto.Latitude
             };
 
             _repository.Add(product);
@@ -55,7 +57,7 @@ namespace Shop.Services.ShopServices.ProductServices
 
             StopIfProductIsNotExist(product);
 
-            _repository.Delete(product);
+            _repository.Delete(product!);
 
             await _unitOfWork.Complete();
         }
@@ -69,11 +71,15 @@ namespace Shop.Services.ShopServices.ProductServices
         {
             var product = await _repository.FindById(id);
 
+            StopIfProductIsNotExist(product);
+
             await StopIfTitleIsDuplicated(id, dto);
 
-            product.Title = dto.Title;
+            product!.Title = dto.Title;
             product.Description = dto.Description;
             product.Price = dto.Price;
+            product.Longitude = dto.Longitude;
+            product.Latitude = dto.Latitude;
 
             await _unitOfWork.Complete();
         }
@@ -92,7 +98,7 @@ namespace Shop.Services.ShopServices.ProductServices
                 throw new DuplicatedProductTitleException();
         }
 
-        private static void StopIfProductIsNotExist(Product product)
+        private static void StopIfProductIsNotExist(Product? product)
         {
             if (product == null)
                 throw new ProductNotFoundException();

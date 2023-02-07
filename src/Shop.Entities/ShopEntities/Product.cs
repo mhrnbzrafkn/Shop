@@ -15,6 +15,8 @@ namespace Shop.Entities.ShopEntities
         public string Description { get; set; }
         public double Price { get; set; }
         public Media Image { get; set; }
+        public double Longitude { get; set; }
+        public double Latitude { get; set; }
         public DateTime CreationDate { get; set; }
         public List<ProductProperty> Properties { get; set; }
     }

@@ -12,5 +12,11 @@ namespace Shop.Services.ShopServices.ProductServices.Contracts.Dtos
         public double Price { get; set; }
         [Required]
         public string ImageId { get; set; }
+        [Required]
+        [Range(0, 90)]
+        public double Longitude { get; set; }
+        [Required]
+        [Range(0, 90)]
+        public double Latitude { get; set; }
     }
 }

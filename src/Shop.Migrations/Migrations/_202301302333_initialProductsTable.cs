@@ -13,6 +13,8 @@ namespace Shop.Migrations.Migrations
                 .WithColumn("Description").AsString(1000).NotNullable()
                 .WithColumn("Price").AsDouble().NotNullable()
                 .WithColumn("ImageId").AsString().NotNullable()
+                .WithColumn("Longitude").AsDouble().NotNullable()
+                .WithColumn("Latitude").AsDouble().NotNullable()
                 .WithColumn("CreationDate").AsDateTime().NotNullable();
         }
 

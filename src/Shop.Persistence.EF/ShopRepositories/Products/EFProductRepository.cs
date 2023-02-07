@@ -58,10 +58,13 @@ namespace Shop.Persistence.EF.ShopRepositories.Products
                 Price = _.Price,
                 ImageId = _.Image.Id,
                 CreationDate = _.CreationDate,
+                Longitude = _.Longitude,
+                Latitude = _.Latitude
+
             }).SingleOrDefaultAsync(_ => _.Id == id);
         }
 
-        public async Task<Product> FindById(string id)
+        public async Task<Product?> FindById(string id)
         {
             return await _products.FindAsync(id);
         }
@@ -88,6 +91,8 @@ namespace Shop.Persistence.EF.ShopRepositories.Products
                 Price = _.Price,
                 ImageId = _.Image.Id,
                 CreationDate = _.CreationDate,
+                Longitude = _.Longitude,
+                Latitude = _.Latitude
             }).OrderByDescending(_ => _.CreationDate);
         }
 

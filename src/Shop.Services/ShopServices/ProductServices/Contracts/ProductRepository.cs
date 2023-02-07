@@ -12,7 +12,7 @@ namespace Shop.Services.ShopServices.ProductServices.Contracts
             ISort<GetAllProductsDto>? sortExpression,
             Pagination? pagination,
             string? search);
-        Task<Product> FindById(string id);
+        Task<Product?> FindById(string id);
         void Delete(Product product);
         Task<GetProductDto?> Get(string id);
         Task<bool> IsTitleDuplicated(string id, string title);

@@ -15,6 +15,8 @@ namespace Shop.Persistence.EF.ShopRepositories.Products
             builder.Property(_ => _.Title).IsRequired();
             builder.Property(_ => _.Description).IsRequired();
             builder.Property(_ => _.Price).IsRequired();
+            builder.Property(_ => _.Longitude).IsRequired();
+            builder.Property(_ => _.Latitude).IsRequired();
 
             builder.OwnsOne(
             _ => _.Image,
